@@ -1,0 +1,30 @@
+.home-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+.form-section, .spots-section {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.form-section h2, .spots-section h2 {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--primary-light);
+}
+
+@media (min-width: 768px) {
+  .home-page {
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+  }
+  
+  .form-section {
+    position: sticky;
+    top: var(--spacing-lg);
+  }
+}

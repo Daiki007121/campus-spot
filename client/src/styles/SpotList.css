@@ -1,0 +1,11 @@
+.spot-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.no-spots-message {
+  text-align: center;
+  color: var(--text-light);
+  padding: var(--spacing-lg);
+}

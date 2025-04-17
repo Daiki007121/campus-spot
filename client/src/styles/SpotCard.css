@@ -1,0 +1,74 @@
+.spot-card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.spot-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.spot-header h3 {
+  margin-bottom: 0;
+  color: var(--primary-color);
+}
+
+.spot-details {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.spot-details p {
+  margin-bottom: 0;
+  font-size: var(--font-size-sm);
+}
+
+.spot-details strong {
+  color: var(--text-secondary);
+}
+
+.spot-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.review-button {
+  background-color: var(--primary-light);
+  color: white;
+  width: 100%;
+}
+
+.edit-delete-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.edit-button, .delete-button {
+  flex: 1;
+}
+
+.edit-button {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.delete-button {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: var(--secondary-light);
+}
+
+.delete-button:hover {
+  opacity: 0.9;
+}

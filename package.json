@@ -1,0 +1,32 @@
+{
+  "name": "campus-spot",
+  "version": "1.0.0",
+  "description": "A web application for discovering and sharing study spots on campus",
+  "main": "index.js",
+  "scripts": {
+  "start": "node server/server.js",
+  "server": "cd server && npx nodemon server.js",
+  "client": "cd client && npm start",
+  "dev": "concurrently \"npm run server\" \"npm run client\"",
+  "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+  "build": "cd client && npm run build",
+  "generate-data": "node server/utils/generateData.js"
+},
+  "keywords": [
+    "react",
+    "mongodb",
+    "express",
+    "campus",
+    "study"
+  ],
+  "author": "Daiki Koike",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Daiki007121/campus-spot/issues"
+  },
+  "homepage": "https://github.com/Daiki007121/campus-spot#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.1"
+  }
+}
