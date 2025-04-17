@@ -1,8 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+// Setup for using mock router
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  BrowserRouter: ({ children }) => children
+}));
+
+test('renders CampusSpot application', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const titleElement = screen.getByText(/CampusSpot/i);
+  expect(titleElement).toBeInTheDocument();
+});
+
+test('renders application tagline', () => {
+  render(<App />);
+  const taglineElement = screen.getByText(/Find the perfect study spot on campus/i);
+  expect(taglineElement).toBeInTheDocument();
 });

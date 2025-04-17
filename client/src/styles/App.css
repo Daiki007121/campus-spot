@@ -121,3 +121,37 @@ button:disabled {
   margin-bottom: var(--spacing-md);
   font-size: var(--font-size-sm);
 }
+
+/* Styles for improving keyboard accessibility */
+:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Focus styles for buttons and links */
+button:focus, 
+a:focus {
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.5); /* Semi-transparent version of primary color */
+  transition: box-shadow 0.2s;
+}
+
+/* Focus styles for form elements */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.25);
+}
+
+/* Text for screen readers (visually hidden but readable) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

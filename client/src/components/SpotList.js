@@ -23,7 +23,16 @@ const SpotList = ({ spots, onEdit, onDelete }) => {
 };
 
 SpotList.propTypes = {
-  spots: PropTypes.array.isRequired,
+  spots: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      building: PropTypes.string.isRequired,
+      floor: PropTypes.string.isRequired,
+      hasOutlet: PropTypes.bool.isRequired,
+      noiseLevel: PropTypes.string.isRequired
+    })
+  ).isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired
 };

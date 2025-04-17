@@ -141,7 +141,14 @@ const SpotForm = ({ onSpotAdded, editingSpot }) => {
 
 SpotForm.propTypes = {
   onSpotAdded: PropTypes.func.isRequired,
-  editingSpot: PropTypes.object
+  editingSpot: PropTypes.shape({
+    _id: PropTypes.string,
+    name: PropTypes.string,
+    building: PropTypes.string,
+    floor: PropTypes.string,
+    hasOutlet: PropTypes.bool,
+    noiseLevel: PropTypes.string
+  })
 };
 
 export default SpotForm;
