@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // API基本URL
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'http://localhost:8080/api';
 
 // APIクライアントの作成
 const apiClient = axios.create({
