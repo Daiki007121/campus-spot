@@ -15,7 +15,7 @@ app.use(express.json());
 // Simple middleware to handle preflight requests and set CORS headers
 app.use((req, res, next) => {
   // Set CORS headers
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', 'https://campus-spot-complete.vercel.app');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
