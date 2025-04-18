@@ -4,14 +4,14 @@
   "description": "A web application for discovering and sharing study spots on campus",
   "main": "index.js",
   "scripts": {
-  "start": "node server/server.js",
-  "server": "cd server && npx nodemon server.js",
-  "client": "cd client && npm start",
-  "dev": "concurrently \"npm run server\" \"npm run client\"",
-  "install-all": "npm install && cd client && npm install && cd ../server && npm install",
-  "build": "cd client && npm run build",
-  "generate-data": "node server/utils/generateData.js"
-},
+    "start": "node server/server.js",
+    "server": "cd server && npx nodemon server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build",
+    "generate-data": "node server/utils/generateData.js"
+  },
   "keywords": [
     "react",
     "mongodb",

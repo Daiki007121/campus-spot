@@ -1,28 +1,34 @@
 import express from 'express';
-import cors from 'cors';
 import dotenv from 'dotenv';
 import { MongoClient, ObjectId } from 'mongodb';
 
-// 環境変数のロード
+// Load environment variables
 dotenv.config();
 
-// Expressアプリケーションの作成
+// Create Express application
 const app = express();
-const SERVER_PORT = 8080; // ポート番号を明示的に固定
+const SERVER_PORT = 8080; // Fixed port number
 
-// CORS設定
-app.use(cors({
-  origin: 'http://localhost:3000',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-// OPTIONS リクエストに対応
-app.options('*', cors());
-
+// Middleware to parse JSON bodies
 app.use(express.json());
 
-// MongoDB接続
+// Simple middleware to handle preflight requests and set CORS headers
+app.use((req, res, next) => {
+  // Set CORS headers
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  
+  // Handle OPTIONS method
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+  
+  next();
+});
+
+// MongoDB connection
 const uri = process.env.MONGODB_URI;
 let db;
 
@@ -141,7 +147,7 @@ app.post('/api/reviews', async (req, res) => {
   }
 });
 
-// サーバーの起動 - ポート番号を固定
+// Start the server - with fixed port number
 connectToDatabase()
   .then(() => {
     app.listen(SERVER_PORT, () => {
