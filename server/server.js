@@ -1,21 +1,36 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { MongoClient, ObjectId } from 'mongodb';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get current file's directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config();
 
 // Create Express application
 const app = express();
-const SERVER_PORT = 8080; // Fixed port number
+const PORT = process.env.PORT || 8080;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Simple middleware to handle preflight requests and set CORS headers
+// CORS middleware - for development flexibility and production security
 app.use((req, res, next) => {
-  // Set CORS headers
-  res.header('Access-Control-Allow-Origin', 'https://campus-spot-complete.vercel.app');
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'https://campusspot-web.onrender.com',
+    'https://campus-spot-complete.vercel.app',
+  ];
+  
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -147,11 +162,29 @@ app.post('/api/reviews', async (req, res) => {
   }
 });
 
-// Start the server - with fixed port number
+// Serve static files from the React app in production
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  
+  // Handle React routing, return all requests to React app
+  app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api/')) {
+      res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    }
+  });
+}
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date() });
+});
+
+// Start the server
 connectToDatabase()
   .then(() => {
-    app.listen(SERVER_PORT, () => {
-      console.log(`Server is running on http://localhost:${SERVER_PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
     });
   })
   .catch(error => {

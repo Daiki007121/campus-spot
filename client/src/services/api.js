@@ -1,5 +1,5 @@
-// API base URL
-const API_BASE_URL = 'https://campus-spot-complete.vercel.app/api';
+// API base URL - using relative URL for deployment flexibility
+const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 // Helper function for fetch with common options
 const fetchWithOptions = async (url, options = {}) => {

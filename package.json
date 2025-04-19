@@ -2,15 +2,17 @@
   "name": "campus-spot",
   "version": "1.0.0",
   "description": "A web application for discovering and sharing study spots on campus",
-  "main": "index.js",
+  "main": "server/server.js",
+  "type": "module",
   "scripts": {
     "start": "node server/server.js",
-    "server": "cd server && npx nodemon server.js",
+    "server": "cd server && npm run dev",
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "install-all": "npm install && cd client && npm install && cd ../server && npm install",
     "build": "cd client && npm run build",
-    "generate-data": "node server/utils/generateData.js"
+    "generate-data": "node server/utils/generateData.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
     "react",
@@ -19,6 +21,9 @@
     "campus",
     "study"
   ],
+  "engines": {
+    "node": ">=16.x"
+  },
   "author": "Daiki Koike",
   "license": "MIT",
   "bugs": {
@@ -28,5 +33,11 @@
   "devDependencies": {
     "concurrently": "^8.2.0",
     "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^6.13.0"
   }
 }
