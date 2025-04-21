@@ -15,13 +15,11 @@ CampusSpot is a web application designed to help students discover and share stu
 
 ## Screenshots
 
-![Homepage](https://via.placeholder.com/800x400?text=Homepage+Screenshot)
+![Homepage](/homepage.png)
 *Homepage with study spot listings*
 
-![Add Spot Form](https://via.placeholder.com/800x400?text=Add+Spot+Form)
-*Form for adding a new study spot*
 
-![Spot Details](https://via.placeholder.com/800x400?text=Spot+Details)
+![Spot Details](/spot-details.png)
 *Detailed view of a study spot with reviews*
 
 ## Features
