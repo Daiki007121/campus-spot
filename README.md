@@ -1,7 +1,5 @@
 # CampusSpot
 
-![CampusSpot Logo](https://via.placeholder.com/200x100?text=CampusSpot)
-
 ## Author
 Daiki Koike
 
