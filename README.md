@@ -1,4 +1,8 @@
 # CampusSpot
+A web application for discovering and sharing study spots on campus.
+
+# CampusSpot URL
+The application is deployed at [https://campus-spot-2.onrender.com/](https://campus-spot-2.onrender.com/)
 
 ## Author
 Daiki Koike
