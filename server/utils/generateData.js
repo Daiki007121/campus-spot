@@ -117,7 +117,7 @@ const generateSpots = (count) => {
 async function generateData() {
   try {
     console.log('Connecting to MongoDB...');
-    console.log('URI:', uri.replace(/:[^:]*@/, ':****@')); // マスクしたURIをログ出力
+    console.log('URI:', uri.replace(/:[^:]*@/, ':****@')); // Log URI with credentials masked
     await client.connect();
     console.log('Connected to MongoDB!');
     
